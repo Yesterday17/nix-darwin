@@ -21,7 +21,9 @@
     neovim
     git
     cmake
+    darwin.iproute2mac
     iterm2
+    # GPG related
     gnupg
     pinentry_mac
   ];
@@ -66,6 +68,7 @@
     brews = [
       "curl"
       "fnm" # Node.js version management
+      "cocoapods"
     ];
 
     # `brew install --cask`
