@@ -77,6 +77,8 @@
       "visual-studio-code"
       "zed"
       "surge" # Network debugging
+      "jetbrains-toolbox"
+      "flutter"
 
       # Fonts
       "font-jetbrains-mono"
