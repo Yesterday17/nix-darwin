@@ -26,6 +26,9 @@
     # GPG related
     gnupg
     pinentry_mac
+    # Utilities
+    jq
+    ffmpeg_5-full
   ];
   environment.variables.EDITOR = "nvim";
 
@@ -81,6 +84,7 @@
 
       # Fonts
       "font-jetbrains-mono"
+      "font-jetbrains-mono-nerd-font"
 
       # IM
       "telegram-desktop"
