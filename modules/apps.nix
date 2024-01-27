@@ -50,8 +50,6 @@
     # otherwise Apple Store will refuse to install them.
     # For details, see https://github.com/mas-cli/mas 
     masApps = {
-      # TODO Feel free to add your favorite apps here.
-
       Xcode = 497799835;
       QQ = 451108668;
     };
@@ -64,7 +62,6 @@
     ];
 
     # `brew install`
-    # TODO Feel free to add your favorite apps here.
     brews = [
       "curl"
       "fnm" # Node.js version management
@@ -72,7 +69,6 @@
     ];
 
     # `brew install --cask`
-    # TODO Feel free to add your favorite apps here.
     casks = [
       "google-chrome"
 
@@ -86,12 +82,13 @@
       # Fonts
       "font-jetbrains-mono"
 
-      # IM & audio & remote desktop & meeting
+      # IM
       "telegram-desktop"
       "discord"
 
       # Productivity
       "raycast"
+      "input-source-pro" # Tool to switch IME, recommended by https://twitter.com/iskyzh/status/1746726405478498560
 
       # Entertainment
       "iina"
