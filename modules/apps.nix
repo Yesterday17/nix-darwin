@@ -94,9 +94,13 @@
       "raycast"
       "input-source-pro" # Tool to switch IME, recommended by https://twitter.com/iskyzh/status/1746726405478498560
 
+      # Utilities
+      "sound-control"
+
       # Entertainment
       "iina"
-      "playcover-prerelease"
+      "playcover-nightly"
+      "steam"
     ];
   };
 }
