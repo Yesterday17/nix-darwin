@@ -21,7 +21,10 @@
     neovim
     git
     cmake
+
+    protobuf
     darwin.iproute2mac
+
     iterm2
     # GPG related
     gnupg
@@ -93,9 +96,9 @@
       # Productivity
       "raycast"
       "input-source-pro" # Tool to switch IME, recommended by https://twitter.com/iskyzh/status/1746726405478498560
+      "typora"
 
       # Utilities
-      "sound-control"
 
       # Entertainment
       "iina"
