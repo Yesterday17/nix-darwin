@@ -32,6 +32,7 @@
     # Utilities
     jq
     ffmpeg_5-full
+    mkvtoolnix-cli
   ];
   environment.variables.EDITOR = "nvim";
 
@@ -72,6 +73,7 @@
       "curl"
       "fnm" # Node.js version management
       "cocoapods"
+      "gitui"
     ];
 
     # `brew install --cask`
@@ -97,6 +99,7 @@
       "raycast"
       "input-source-pro" # Tool to switch IME, recommended by https://twitter.com/iskyzh/status/1746726405478498560
       "typora"
+      "notion"
 
       # Utilities
 
@@ -104,6 +107,8 @@
       "iina"
       "playcover-nightly"
       "steam"
+
+      "lark"
     ];
   };
 }

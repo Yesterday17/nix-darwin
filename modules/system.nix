@@ -41,6 +41,7 @@
       NSGlobalDomain = {
         # Disable natural scrolling
         "com.apple.swipescrolldirection" = false;
+        "ApplePressAndHoldEnabled" = false;
       };
     };
 
