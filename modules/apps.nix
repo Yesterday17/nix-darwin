@@ -33,6 +33,8 @@
     jq
     ffmpeg_5-full
     mkvtoolnix-cli
+    age
+    flac
   ];
   environment.variables.EDITOR = "nvim";
 
@@ -66,6 +68,7 @@
       "homebrew/services"
       "homebrew/cask-versions"
       "PlayCover/playcover"
+      "minio/stable"
     ];
 
     # `brew install`
@@ -74,6 +77,13 @@
       "fnm" # Node.js version management
       "cocoapods"
       "gitui"
+      "rclone"
+      "bento4"
+      "foreman" # for Zed development
+      "minio/stable/minio"
+      # yubikey
+      "ykpers"
+      "ykman"
     ];
 
     # `brew install --cask`
@@ -86,6 +96,7 @@
       "surge" # Network debugging
       "jetbrains-toolbox"
       "flutter"
+      "docker"
 
       # Fonts
       "font-jetbrains-mono"
@@ -100,8 +111,13 @@
       "input-source-pro" # Tool to switch IME, recommended by https://twitter.com/iskyzh/status/1746726405478498560
       "typora"
       "notion"
+      "arc"
 
       # Utilities
+      "bruno"      # HTTP client
+      "maczip"     # eZip
+      "qspace-pro" # File Manager
+      "bleunlock"  # Quick unlock
 
       # Entertainment
       "iina"
