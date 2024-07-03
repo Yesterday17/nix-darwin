@@ -54,4 +54,6 @@
   # this is required if you want to use darwin's default shell - zsh
   programs.zsh.enable = true;
 
+  #nix.configureBuildUsers = true;
+  #ids.uids.nixbld = pkgs.lib.mkForce 30000;
 }

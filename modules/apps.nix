@@ -118,11 +118,13 @@
       "maczip"     # eZip
       "qspace-pro" # File Manager
       "bleunlock"  # Quick unlock
+      "squirrel"   # IME
 
       # Entertainment
       "iina"
       "playcover-nightly"
       "steam"
+      "prismlauncher"
 
       "lark"
     ];
