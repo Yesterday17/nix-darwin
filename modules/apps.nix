@@ -84,6 +84,16 @@
       # yubikey
       "ykpers"
       "ykman"
+
+      # https://github.com/Automattic/node-canvas/issues/2353
+      "pkg-config"
+      "cairo"
+      "pango"
+      "libpng"
+      "jpeg"
+      "giflib"
+      "librsvg"
+      "pixman"
     ];
 
     # `brew install --cask`
