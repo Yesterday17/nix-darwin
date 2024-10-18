@@ -84,6 +84,7 @@
       # yubikey
       "ykpers"
       "ykman"
+      "filosottile/musl-cross/musl-cross"
 
       # https://github.com/Automattic/node-canvas/issues/2353
       "pkg-config"
@@ -94,6 +95,8 @@
       "giflib"
       "librsvg"
       "pixman"
+      "awscli"
+      "opus-tools"
     ];
 
     # `brew install --cask`
@@ -107,6 +110,8 @@
       "jetbrains-toolbox"
       "flutter"
       "docker"
+      "alacritty"
+      "navicat-premium-lite"
 
       # Fonts
       "font-jetbrains-mono"
@@ -129,12 +134,19 @@
       "qspace-pro" # File Manager
       "bleunlock"  # Quick unlock
       "squirrel"   # IME
+      "010-editor" # Hex Editor
+      "msty"       # Chat GUI
+      "openvpn-connect"
+      "github"
+      "obsidian"
+      "wireshark"
 
       # Entertainment
       "iina"
       "playcover-nightly"
       "steam"
       "prismlauncher"
+      "obs"
 
       "lark"
     ];
