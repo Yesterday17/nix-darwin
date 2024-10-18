@@ -31,7 +31,7 @@
     pinentry_mac
     # Utilities
     jq
-    ffmpeg_5-full
+    ffmpeg_6-full
     mkvtoolnix-cli
     age
     flac
