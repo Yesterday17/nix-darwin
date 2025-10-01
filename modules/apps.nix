@@ -23,7 +23,7 @@
     cmake
 
     protobuf
-    darwin.iproute2mac
+    iproute2mac
 
     iterm2
     # GPG related
@@ -35,6 +35,7 @@
     mkvtoolnix-cli
     age
     flac
+    nushell
   ];
   environment.variables.EDITOR = "nvim";
 
@@ -105,11 +106,11 @@
 
       # Development
       "visual-studio-code"
-      "zed"
+      # "zed@preview"
       "surge" # Network debugging
       "jetbrains-toolbox"
       "flutter"
-      "docker"
+      "docker-desktop"
       "alacritty"
       "navicat-premium-lite"
 
@@ -127,19 +128,20 @@
       "typora"
       "notion"
       "arc"
+      # "cursor"
 
       # Utilities
       "bruno"      # HTTP client
       "maczip"     # eZip
       "qspace-pro" # File Manager
-      "bleunlock"  # Quick unlock
-      "squirrel"   # IME
+      "squirrel-app"   # IME
       "010-editor" # Hex Editor
       "msty"       # Chat GUI
-      "openvpn-connect"
+      "tunnelblick"# OpenVPN
+      "zed@preview"
       "github"
       "obsidian"
-      "wireshark"
+      "wireshark-app"
 
       # Entertainment
       "iina"
