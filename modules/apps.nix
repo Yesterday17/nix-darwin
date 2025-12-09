@@ -35,7 +35,18 @@
     mkvtoolnix-cli
     age
     flac
+
+    # Shell
     nushell
+    zellij
+
+    # Load testing
+    k6
+    # Nix env
+    direnv
+
+    # Chatting
+    mumble
   ];
   environment.variables.EDITOR = "nvim";
 
