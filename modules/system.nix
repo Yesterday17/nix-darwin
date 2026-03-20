@@ -55,6 +55,9 @@
   # this is required if you want to use darwin's default shell - zsh
   programs.zsh.enable = true;
 
+  users.users.yesterday17.home = "/Users/yesterday17";
+  nixpkgs.config.allowUnfree = true;
+
   #nix.configureBuildUsers = true;
   #ids.uids.nixbld = pkgs.lib.mkForce 30000;
 }

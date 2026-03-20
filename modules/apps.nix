@@ -25,15 +25,14 @@
     protobuf
     iproute2mac
 
-    iterm2
     # GPG related
     gnupg
     pinentry_mac
     # Utilities
     jq
-    ffmpeg_6-full
+    ffmpeg-full
     mkvtoolnix-cli
-    age
+    #age
     flac
 
     # Shell
@@ -79,28 +78,17 @@
       QQ = 451108668;
     };
 
-    taps = [
-      "homebrew/cask-fonts"
-      "homebrew/services"
-      "homebrew/cask-versions"
-      "PlayCover/playcover"
-      "minio/stable"
-    ];
-
     # `brew install`
     brews = [
       "curl"
       "fnm" # Node.js version management
       "cocoapods"
-      "gitui"
       "rclone"
       "bento4"
-      "foreman" # for Zed development
-      "minio/stable/minio"
       # yubikey
       "ykpers"
       "ykman"
-      "filosottile/musl-cross/musl-cross"
+      #"filosottile/musl-cross/musl-cross"
 
       # https://github.com/Automattic/node-canvas/issues/2353
       "pkg-config"
@@ -114,7 +102,7 @@
       "awscli"
       "opus-tools"
 
-      "dive"
+      #"dive"
     ];
 
     # `brew install --cask`
@@ -126,11 +114,11 @@
       "cmux"
       # "zed@preview"
       "surge" # Network debugging
-      "jetbrains-toolbox"
-      "flutter"
-      "docker-desktop"
-      "alacritty"
-      "navicat-premium-lite"
+      #"jetbrains-toolbox"
+      #"flutter"
+      #"docker-desktop"
+      #"alacritty"
+      #"navicat-premium-lite"
 
       # Fonts
       "font-jetbrains-mono"
@@ -141,29 +129,27 @@
       "discord"
 
       # Productivity
-      "raycast"
       "input-source-pro" # Tool to switch IME, recommended by https://twitter.com/iskyzh/status/1746726405478498560
-      "typora"
-      "notion"
-      "arc"
-      # "cursor"
+      #"typora"
+      #"notion"
+      #"arc"
+      #"cursor"
 
       # Utilities
-      "bruno"      # HTTP client
-      "maczip"     # eZip
-      "qspace-pro" # File Manager
-      "squirrel-app"   # IME
-      "010-editor" # Hex Editor
-      "tunnelblick"# OpenVPN
+      #"bruno"      # HTTP client
+      #"maczip"     # eZip
+      #"qspace-pro" # File Manager
+      "squirrel-app"# IME
+      "010-editor"  # Hex Editor
+      "tunnelblick" # OpenVPN
       "zed@preview"
       "github"
-      "obsidian"
-      "wireshark-app"
-      "ghostty"
+      #"obsidian"
+      #"wireshark-app"
+      #"ghostty"
 
       # Entertainment
       "iina"
-      "playcover-nightly"
       "steam"
       "prismlauncher"
       "obs"
