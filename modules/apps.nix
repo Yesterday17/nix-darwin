@@ -55,6 +55,7 @@
 
   # Enable karabiner-elements service
   services."karabiner-elements".enable = true;
+  services.tailscale.enable = true;
 
   # TODO To make this work, homebrew need to be installed manually, see https://brew.sh
   #
@@ -112,6 +113,8 @@
       "pixman"
       "awscli"
       "opus-tools"
+
+      "dive"
     ];
 
     # `brew install --cask`
@@ -120,6 +123,7 @@
 
       # Development
       "visual-studio-code"
+      "cmux"
       # "zed@preview"
       "surge" # Network debugging
       "jetbrains-toolbox"
@@ -150,7 +154,6 @@
       "qspace-pro" # File Manager
       "squirrel-app"   # IME
       "010-editor" # Hex Editor
-      "msty"       # Chat GUI
       "tunnelblick"# OpenVPN
       "zed@preview"
       "github"
