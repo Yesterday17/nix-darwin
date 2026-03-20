@@ -1,13 +1,14 @@
 { pkgs, ... }:
 
 {
-  nix.settings = {
-    # enable flakes globally
-    experimental-features = ["nix-command" "flakes"];
+  nix.enable = true;
+  nix.package = pkgs.nix;
+  nix.channel.enable = false;
 
-    # substituers that will be considered before the official ones(https://cache.nixos.org)
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+
     substituters = [
-      #"https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
       "https://cache.lix.systems"
     ];
@@ -17,8 +18,4 @@
     ];
     builders-use-substitutes = true;
   };
-
-  # Auto upgrade nix package and the daemon service.
-  nix.enable = true;
-  nix.package = pkgs.nix;
 }
