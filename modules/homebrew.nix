@@ -53,7 +53,6 @@
       "google-chrome"
 
       # Development
-      "visual-studio-code"
       "zed@preview"
       "cmux"
       "surge"
@@ -69,6 +68,12 @@
 
       # Productivity
       "input-source-pro"
+
+      # Terminal
+      "ghostty"
+
+      # System monitor
+      "stats"
 
       # Utilities
       "squirrel-app"
