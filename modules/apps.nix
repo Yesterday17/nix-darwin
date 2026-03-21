@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    home-manager
     vim
     neovim
     git
@@ -26,6 +27,16 @@
 
     # VPN
     tailscale
+
+    # Go
+    go
+    gopls
+    delve
+    golangci-lint
+    gofumpt
+
+    # Node.js
+    fnm
 
     # Nix
     direnv

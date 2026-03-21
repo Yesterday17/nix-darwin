@@ -5,6 +5,8 @@
   nix.package = pkgs.nix;
   nix.channel.enable = false;
 
+  nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
+
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
 

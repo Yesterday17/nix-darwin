@@ -29,8 +29,8 @@
     };
 
     brews = [
+      "mas"
       "curl"
-      "fnm"
       "cocoapods"
       "rclone"
       "bento4"
@@ -56,10 +56,14 @@
       "zed@preview"
       "cmux"
       "surge"
+      "orbstack"
 
       # Fonts
       "font-jetbrains-mono"
       "font-jetbrains-mono-nerd-font"
+
+      # AI
+      "claude"
 
       # IM
       "telegram-desktop"

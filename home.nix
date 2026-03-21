@@ -1,6 +1,7 @@
 { config, lib, pkgs, claude-code, ... }:
 
 {
+  home.username = "yesterday17";
   home.homeDirectory = "/Users/yesterday17";
   home.stateVersion = "25.11";
 
@@ -55,11 +56,43 @@
   programs.vscode = {
     enable = true;
     profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
+        golang.go
+        wakatime.vscode-wakatime
+        bradlc.vscode-tailwindcss
+        github.copilot-chat
+        jnoortheen.nix-ide
+        vscodevim.vim
+      ] ++ [
+        (pkgs.vscode-utils.extensionFromVscodeMarketplace {
+          name = "oxc-vscode";
+          publisher = "oxc";
+          version = "1.50.0";
+          hash = "sha256-ZEL3nwq2nY776ZS6V+0r3+IAwH21vzwWpYM3zLj05sI=";
+        })
+        (pkgs.vscode-utils.extensionFromVscodeMarketplace {
+          name = "native-preview";
+          publisher = "TypeScriptTeam";
+          version = "0.20260321.1";
+          hash = "sha256-pk7jrHATHyvoN4kEKmAompAGJZ/Gmddn//1yPrj6jYI=";
+        })
+        (pkgs.vscode-utils.extensionFromVscodeMarketplace {
+          name = "claude-code";
+          publisher = "anthropic";
+          version = "2.1.81";
+          hash = "sha256-AblL1ChlZ8JKMhKVz/AAV22iyGfWQWXfLY2ntLWg/ik=";
+        })
+      ];
       userSettings = {
         "editor.fontFamily" = "'Berkeley Mono', 'JetBrains Mono', monospace";
         "editor.fontSize" = 14;
         "editor.fontLigatures" = true;
         "terminal.integrated.fontFamily" = "'Berkeley Mono', 'JetBrains Mono', monospace";
+        "workbench.secondarySideBar.defaultVisibility" = "hidden";
+        "window.autoDetectColorScheme" = true;
+        "gopls" = {
+          "formatting.gofumpt" = true;
+        };
       };
     };
   };
@@ -75,6 +108,7 @@
       theme = "dark:Gruvbox Dark,light:Gruvbox Light";
       window-decoration = false;
       macos-option-as-alt = true;
+      term = "xterm-256color";
     };
   };
 
@@ -107,12 +141,12 @@
   };
   home.activation.inputSourceProData = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     DOMAIN="com.runjuu.Input-Source-Pro"
-    defaults write "$DOMAIN" appearanceMode -data "IkRhcmsi"
-    defaults write "$DOMAIN" indicatorInfo -data "eyJiYXNlIjoiaWNvbkFuZFRpdGxlIn0="
-    defaults write "$DOMAIN" indicatorPosition -data "eyJiYXNlIjoibmVhck1vdXNlIn0="
-    defaults write "$DOMAIN" indicatorSize -data "eyJiYXNlIjoyfQ=="
-    defaults write "$DOMAIN" indicatorBackground -data "eyJsaWdodCI6IjBjNzQ4OWZmIiwiZGFyayI6IjAwMDAwMGZmIn0="
-    defaults write "$DOMAIN" indicatorForgeground -data "eyJkYXJrIjoiZmZmZmZmZmYiLCJsaWdodCI6ImZmZmZmZmZmIn0="
+    /usr/bin/defaults write "$DOMAIN" appearanceMode -data "224461726b22"
+    /usr/bin/defaults write "$DOMAIN" indicatorInfo -data "7b2262617365223a2269636f6e416e645469746c65227d"
+    /usr/bin/defaults write "$DOMAIN" indicatorPosition -data "7b2262617365223a226e6561724d6f757365227d"
+    /usr/bin/defaults write "$DOMAIN" indicatorSize -data "7b2262617365223a327d"
+    /usr/bin/defaults write "$DOMAIN" indicatorBackground -data "7b226c69676874223a223063373438396666222c226461726b223a223030303030306666227d"
+    /usr/bin/defaults write "$DOMAIN" indicatorForgeground -data "7b226461726b223a226666666666666666222c226c69676874223a226666666666666666227d"
   '';
 
   # GPG agent with SSH support (YubiKey)
@@ -128,6 +162,11 @@
       }
     ];
   };
+  home.file.".wakatime.cfg".text = ''
+    [settings]
+    api_key = WAKATIME_API_KEY_PLACEHOLDER
+  '';
+
   home.file.".gnupg/gpg-agent.conf".text = ''
     pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
     enable-ssh-support
@@ -144,5 +183,8 @@
     export GPG_TTY="$(tty)"
     export SSH_AUTH_SOCK="$(${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)"
     ${pkgs.gnupg}/bin/gpgconf --launch gpg-agent
+
+    # fnm (Node.js version manager)
+    eval "$(${pkgs.fnm}/bin/fnm env --use-on-cd --shell zsh)"
   '';
 }

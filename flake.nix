@@ -35,14 +35,21 @@
       inherit specialArgs;
       modules = [
         nix-homebrew.darwinModules.nix-homebrew
-        home-manager.darwinModules.home-manager
 
         ./modules/nix-core.nix
         ./modules/host.nix
         ./modules/system.nix
         ./modules/apps.nix
         ./modules/homebrew.nix
-        ./modules/home.nix
+      ];
+    };
+
+    homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+      extraSpecialArgs = { inherit claude-code; };
+      modules = [
+        ./home.nix
+        { nixpkgs.config.allowUnfree = true; }
       ];
     };
 

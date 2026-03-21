@@ -70,6 +70,25 @@
         ];
       };
 
+      # Lock screen after 5 minutes idle
+      CustomUserPreferences."com.apple.screensaver" = {
+        idleTime = 300;
+      };
+
+      # Screenshot: Cmd+Shift+S for area to clipboard
+      CustomUserPreferences."com.apple.symbolichotkeys" = {
+        AppleSymbolicHotKeys = {
+          # Disable default Cmd+Shift+S (28: area to clipboard is Cmd+Ctrl+Shift+4 by default)
+          "28" = {
+            enabled = true;
+            value = {
+              parameters = [ 115 1 1179648 ]; # 's', keycode 1, Cmd+Shift
+              type = "standard";
+            };
+          };
+        };
+      };
+
       NSGlobalDomain = {
         "com.apple.swipescrolldirection" = false;
         "ApplePressAndHoldEnabled" = false;
