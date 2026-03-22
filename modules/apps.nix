@@ -35,6 +35,9 @@
     golangci-lint
     gofumpt
 
+    # Rust
+    rustup
+
     # Node.js
     fnm
 
