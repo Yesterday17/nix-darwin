@@ -1,0 +1,27 @@
+patch:
+  speller/algebra:
+    __patch:
+      - wanxiang_algebra:/pro/小鹤双拼
+      - wanxiang_algebra:/pro/直接辅助
+  menu/page_size: 6
+
+  # Remove ascii_mode switch entirely - always Chinese
+  # Use system Caps Lock to switch to ABC for English
+  switches:
+    - name: ascii_punct
+      states: [ 中标, 英标 ]
+    - name: full_shape
+      states: [ 半角, 全角 ]
+    - name: emoji
+      states: [ 表情关, 表情开 ]
+    - name: chinese_english
+      states: [ 翻译关, 翻译开 ]
+    - name: charset_filter
+      reset: 1
+      states: [ 全集, 常用 ]
+    - name: s2t
+      states: [ 简体, 繁体 ]
+    - name: s2hk
+      states: [ 简体, 港繁 ]
+    - name: s2tw
+      states: [ 简体, 台繁 ]

@@ -1,0 +1,15 @@
+# Custom Rime configuration
+patch:
+  schema_list:
+    - schema: wanxiang_pro
+
+  # Disable ASCII mode switching globally
+  # Use system Caps Lock to switch IME instead
+  ascii_composer:
+    good_old_caps_lock: false
+    switch_key:
+      Shift_L: noop
+      Shift_R: noop
+      Caps_Lock: clear
+      Control_L: noop
+      Control_R: noop

@@ -1,5 +1,26 @@
-{ config, lib, pkgs, claude-code, ... }:
+{ config, lib, pkgs, claude-code, rime-wanxiang, ... }:
 
+let
+  rime-wanxiang-flypy = pkgs.stdenvNoCC.mkDerivation {
+    pname = "rime-wanxiang-flypy";
+    version = rime-wanxiang.rev or "unstable";
+    src = rime-wanxiang;
+    nativeBuildInputs = with pkgs; [ python3 rsync zip unzip ];
+    buildPhase = ''
+      export HOME=$TMPDIR
+      export SCHEMA_NAME=flypy
+      bash .github/workflows/scripts/release-build.sh
+    '';
+    installPhase = ''
+      mkdir -p $out
+      unzip -o dist/rime-wanxiang-flypy-fuzhu.zip -d $out
+    '';
+  };
+  rime-gram = pkgs.fetchurl {
+    url = "https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram";
+    hash = "sha256-Ll7zRgRn6u0+Vpo2BQwhMTnjTHropbvVXKsyeg2A0Bc=";
+  };
+in
 {
   home.username = "yesterday17";
   home.homeDirectory = "/Users/yesterday17";
@@ -16,6 +37,23 @@
     cp -f "$FONT_SRC/BerkeleyMonoVariable 2.002 calt.ttf" "$FONT_DST/"
   '';
   home.shellAliases.lcc = "claude";
+
+  # Rime (Squirrel) - wanxiang schema + custom config
+  home.activation.installRime = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    RIME_DIR="$HOME/Library/Rime"
+    mkdir -p "$RIME_DIR"
+
+    # Copy wanxiang flypy release files
+    chmod -R u+w "$RIME_DIR" 2>/dev/null || true
+    cp -rf ${rime-wanxiang-flypy}/* "$RIME_DIR/"
+    chmod -R u+w "$RIME_DIR"
+
+    # Install gram model
+    cp -f ${rime-gram} "$RIME_DIR/wanxiang-lts-zh-hans.gram"
+
+    # Overlay custom config (takes precedence)
+    cp -rf ${./rime}/* "$RIME_DIR/"
+  '';
 
   # Git
   programs.git = {

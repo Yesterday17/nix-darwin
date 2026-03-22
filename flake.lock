@@ -176,6 +176,22 @@
         "type": "github"
       }
     },
+    "rime-wanxiang": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774152240,
+        "narHash": "sha256-b8DghwT+OLMkY6aY3zk9qsepKF/BBRR824JgNHfY544=",
+        "owner": "amzxyz",
+        "repo": "rime_wanxiang",
+        "rev": "af9914f75d49a22b113266b5fd692f1aa3431fff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "amzxyz",
+        "repo": "rime_wanxiang",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "claude-code": "claude-code",
@@ -185,6 +201,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2",
+        "rime-wanxiang": "rime-wanxiang",
         "sops-nix": "sops-nix"
       }
     },

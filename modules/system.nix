@@ -89,6 +89,62 @@
         };
       };
 
+      # Global preferences not in nix-darwin typed options
+      CustomUserPreferences."NSGlobalDomain" = {
+        TISRomanSwitchState = 1; # Use Caps Lock to switch to and from ABC
+        NSUserQuotesArray = [ ''"'' ''"'' "'" "'" ]; # Straight quotes
+      };
+
+      # Kotoeri (Japanese IME)
+      CustomUserPreferences."com.apple.inputmethod.Kotoeri" = {
+        JIMPrefConvertWithPunctuationKey = 0;  # Don't auto-convert on punctuation
+        JIMPrefShiftKeyActionKey = 1;          # Shift toggles between modes
+        JIMPrefWindowsModeKey = 0;             # Mac-style behavior
+      };
+
+      # Input sources: Squirrel (Rime)
+      CustomUserPreferences."com.apple.inputsources" = {
+        AppleEnabledThirdPartyInputSources = [
+          {
+            "Bundle ID" = "im.rime.inputmethod.Squirrel";
+            "Input Mode" = "im.rime.inputmethod.Squirrel.Hans";
+            InputSourceKind = "Input Mode";
+          }
+          {
+            "Bundle ID" = "im.rime.inputmethod.Squirrel";
+            InputSourceKind = "Keyboard Input Method";
+          }
+        ];
+      };
+
+      # Input sources: ABC + Japanese (Romaji)
+      CustomUserPreferences."com.apple.HIToolbox" = {
+        AppleEnabledInputSources = [
+          {
+            InputSourceKind = "Keyboard Layout";
+            "KeyboardLayout ID" = 252;
+            "KeyboardLayout Name" = "ABC";
+          }
+          {
+            "Bundle ID" = "com.apple.inputmethod.Kotoeri.RomajiTyping";
+            "Input Mode" = "com.apple.inputmethod.Japanese";
+            InputSourceKind = "Input Mode";
+          }
+          {
+            "Bundle ID" = "com.apple.inputmethod.Kotoeri.RomajiTyping";
+            InputSourceKind = "Keyboard Input Method";
+          }
+          {
+            "Bundle ID" = "com.apple.CharacterPaletteIM";
+            InputSourceKind = "Non Keyboard Input Method";
+          }
+          {
+            "Bundle ID" = "com.apple.50onPaletteIM";
+            InputSourceKind = "Non Keyboard Input Method";
+          }
+        ];
+      };
+
       NSGlobalDomain = {
         "com.apple.swipescrolldirection" = false;
         "ApplePressAndHoldEnabled" = false;

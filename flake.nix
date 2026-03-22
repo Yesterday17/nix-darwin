@@ -25,9 +25,14 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    rime-wanxiang = {
+      url = "github:amzxyz/rime_wanxiang";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, claude-code, sops-nix }:
+  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, claude-code, sops-nix, rime-wanxiang }:
   let
     username = "yesterday17";
     hosts = [ "Yesterday17-M3" "Yesterday17-M5" ];
@@ -59,7 +64,7 @@
 
     homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-      extraSpecialArgs = { inherit claude-code; };
+      extraSpecialArgs = { inherit claude-code rime-wanxiang; };
       modules = [
         sops-nix.homeManagerModules.sops
         ./home.nix
