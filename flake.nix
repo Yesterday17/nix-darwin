@@ -30,22 +30,32 @@
   outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, claude-code, sops-nix }:
   let
     username = "yesterday17";
-    hostname = "Yesterday17-M5";
-    specialArgs = { inherit self username homebrew-core homebrew-cask claude-code; };
-  in
-  {
-    darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-      inherit specialArgs;
-      modules = [
-        nix-homebrew.darwinModules.nix-homebrew
+    hosts = [ "Yesterday17-M3" "Yesterday17-M5" ];
 
-        ./modules/nix-core.nix
-        ./modules/host.nix
-        ./modules/system.nix
-        ./modules/apps.nix
-        ./modules/homebrew.nix
+    specialArgs = { inherit self username homebrew-core homebrew-cask claude-code; };
+
+    sharedDarwinModules = [
+      nix-homebrew.darwinModules.nix-homebrew
+
+      ./modules/nix-core.nix
+      ./modules/host.nix
+      ./modules/system.nix
+      ./modules/apps.nix
+      ./modules/homebrew.nix
+    ];
+
+    mkDarwinConfig = hostname: nix-darwin.lib.darwinSystem {
+      specialArgs = specialArgs // { inherit hostname; };
+      modules = sharedDarwinModules ++ [
+        ./hosts/${hostname}.nix
       ];
     };
+  in
+  {
+    darwinConfigurations = builtins.listToAttrs (map (hostname: {
+      name = hostname;
+      value = mkDarwinConfig hostname;
+    }) hosts);
 
     homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
@@ -56,7 +66,5 @@
         { nixpkgs.config.allowUnfree = true; }
       ];
     };
-
-    darwinPackages = self.darwinConfigurations.${hostname}.pkgs;
   };
 }

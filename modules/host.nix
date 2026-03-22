@@ -1,6 +1,7 @@
-{ self, claude-code, ... }:
+{ self, hostname, claude-code, ... }:
 
 {
+  networking.hostName = hostname;
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config.allowUnfree = true;
 
