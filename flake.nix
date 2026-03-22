@@ -22,9 +22,12 @@
     };
 
     claude-code.url = "github:sadjow/claude-code-nix";
+
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, claude-code }:
+  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, claude-code, sops-nix }:
   let
     username = "yesterday17";
     hostname = "Yesterday17-M5";
@@ -48,6 +51,7 @@
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
       extraSpecialArgs = { inherit claude-code; };
       modules = [
+        sops-nix.homeManagerModules.sops
         ./home.nix
         { nixpkgs.config.allowUnfree = true; }
       ];

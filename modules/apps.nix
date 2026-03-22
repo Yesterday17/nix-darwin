@@ -38,6 +38,9 @@
     # Node.js
     fnm
 
+    # Secrets
+    sops
+
     # Nix
     direnv
 

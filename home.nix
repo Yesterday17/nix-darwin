@@ -46,6 +46,15 @@
     };
   };
 
+  # GitHub CLI
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "ssh";
+      editor = "nvim";
+    };
+  };
+
   # Direnv - auto-load .envrc
   programs.direnv = {
     enable = true;
@@ -162,10 +171,20 @@
       }
     ];
   };
-  home.file.".wakatime.cfg".text = ''
-    [settings]
-    api_key = WAKATIME_API_KEY_PLACEHOLDER
-  '';
+  # Sops secrets
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+    secrets.wakatime_api_key = {};
+  };
+
+  sops.templates.".wakatime.cfg" = {
+    path = "${config.home.homeDirectory}/.wakatime.cfg";
+    content = ''
+      [settings]
+      api_key = ${config.sops.placeholder.wakatime_api_key}
+    '';
+  };
 
   home.file.".gnupg/gpg-agent.conf".text = ''
     pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
