@@ -28,6 +28,11 @@ in
 
   home.packages = [ pkgs.claude-code ];
 
+  # Rust - install stable toolchain via rustup
+  home.activation.installRust = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ${pkgs.rustup}/bin/rustup default stable
+  '';
+
   # Berkeley Mono font from iCloud Drive
   home.activation.installBerkeleyMono = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     FONT_SRC="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Fonts"
@@ -105,6 +110,7 @@ in
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
         golang.go
+        rust-lang.rust-analyzer
         wakatime.vscode-wakatime
         bradlc.vscode-tailwindcss
         github.copilot-chat
