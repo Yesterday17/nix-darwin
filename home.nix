@@ -31,6 +31,8 @@ in
   # Rust - install stable toolchain via rustup
   home.activation.installRust = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ${pkgs.rustup}/bin/rustup default stable
+    ${pkgs.rustup}/bin/rustup target add aarch64-apple-ios
+    ${pkgs.rustup}/bin/rustup target add aarch64-apple-ios-sim
   '';
 
   # Berkeley Mono font from iCloud Drive

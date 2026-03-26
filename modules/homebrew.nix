@@ -26,6 +26,7 @@
     masApps = {
       Xcode = 497799835;
       QQ = 451108668;
+      "Microsoft Excel" = 462058435;
     };
 
     brews = [
@@ -57,6 +58,7 @@
       "cmux"
       "surge"
       "orbstack"
+      "android-studio"
 
       # Fonts
       "font-jetbrains-mono"
