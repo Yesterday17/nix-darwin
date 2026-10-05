@@ -32,6 +32,7 @@
       },
       "original": {
         "owner": "sadjow",
+        "ref": "v2.1.289",
         "repo": "claude-code-nix",
         "type": "github"
       }
@@ -59,11 +60,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1791189415,
-        "narHash": "sha256-FtDz7oYtFGrCHNZXocrWBzVSs17PWu5o46ovLGBTP98=",
+        "lastModified": 1791215580,
+        "narHash": "sha256-Xq+PWphFleoNBvNil5AZand/gzCH2PFu5HG+LT6FHqQ=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "6911c3f9b641bd5ccd42cee0fa1c3bc86bc538d8",
+        "rev": "3e687b4a015b32c5ec272d880622edddbc16a63a",
         "type": "github"
       },
       "original": {
@@ -75,11 +76,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1791194334,
-        "narHash": "sha256-f77cFoTgboTNR7SGHDsoqMEsWz9DYA4ifR27bMXRiYU=",
+        "lastModified": 1791215859,
+        "narHash": "sha256-pSrYvUwXJFxJG+FtXVK6ahbMSP4b0y2tvgqRO/N3NK0=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "1f6ca8eeb5ffd1724e361482b44aee65846447ce",
+        "rev": "0fddc2b4944d2ffa6a3c2a866a81a7a5f42c1b2c",
         "type": "github"
       },
       "original": {
@@ -160,11 +161,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1791097562,
-        "narHash": "sha256-K9O9lG3UZNFCnwrz0ViWgP3Kgqukg1DvvzsrkFJfcvU=",
+        "lastModified": 1791161550,
+        "narHash": "sha256-hUcT0jKmSHN5XgRW3sSEIIlqsVClkVfToluYtOd56ok=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a322c65bf7233456788a9ebf03bc067db7dc090a",
+        "rev": "8c6b39505383e6d5dcb431f00cb3597b71f8045c",
         "type": "github"
       },
       "original": {
@@ -177,11 +178,11 @@
     "rime-wanxiang": {
       "flake": false,
       "locked": {
-        "lastModified": 1791187812,
-        "narHash": "sha256-kx2CbaCCvJ11WlbeG8ghCaWyilX4ceWtl0WedC0kyCw=",
+        "lastModified": 1791204737,
+        "narHash": "sha256-NU/qleqE7LpD86sGJnmbKzWp/6NnzYSbekYCLU/Gc/w=",
         "owner": "amzxyz",
         "repo": "rime_wanxiang",
-        "rev": "5d8463b54438f639fdaf97959601d11a2e3be5ad",
+        "rev": "bf9fe992ed9e2804c4cdc932e69e863db98af988",
         "type": "github"
       },
       "original": {

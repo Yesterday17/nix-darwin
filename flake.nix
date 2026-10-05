@@ -25,7 +25,7 @@
       flake = false;
     };
 
-    claude-code.url = "github:sadjow/claude-code-nix";
+    claude-code.url = "github:sadjow/claude-code-nix?ref=v2.1.289";
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
