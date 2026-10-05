@@ -153,6 +153,20 @@
   };
 
   security.pam.services.sudo_local.touchIdAuth = true;
+
+  # Keep GUI-launched development tools from inheriting launchd's default
+  # 256-file soft limit. The hard limit stays below kern.maxfilesperproc.
+  launchd.daemons.maxfiles.serviceConfig = {
+    ProgramArguments = [
+      "/bin/launchctl"
+      "limit"
+      "maxfiles"
+      "65536"
+      "200000"
+    ];
+    RunAtLoad = true;
+  };
+
   programs.zsh.enable = true;
   users.users.${username}.home = "/Users/${username}";
 }
