@@ -28,11 +28,20 @@ in
 
   home.packages = [ pkgs.claude-code ];
 
+  # Happy Coder - install via npm
+  home.activation.installHappyCoder = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if command -v npm &>/dev/null; then
+      npm install -g happy-coder@beta 2>/dev/null
+      npm install -g opencode-ai@latest 2>/dev/null
+    fi
+  '';
+
   # Rust - install stable toolchain via rustup
   home.activation.installRust = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ${pkgs.rustup}/bin/rustup default stable
     ${pkgs.rustup}/bin/rustup target add aarch64-apple-ios
     ${pkgs.rustup}/bin/rustup target add aarch64-apple-ios-sim
+    ${pkgs.rustup}/bin/rustup target add wasm32-unknown-unknown
   '';
 
   # Berkeley Mono font from iCloud Drive
@@ -138,17 +147,6 @@ in
           hash = "sha256-AblL1ChlZ8JKMhKVz/AAV22iyGfWQWXfLY2ntLWg/ik=";
         })
       ];
-      userSettings = {
-        "editor.fontFamily" = "'Berkeley Mono', 'JetBrains Mono', monospace";
-        "editor.fontSize" = 14;
-        "editor.fontLigatures" = true;
-        "terminal.integrated.fontFamily" = "'Berkeley Mono', 'JetBrains Mono', monospace";
-        "workbench.secondarySideBar.defaultVisibility" = "hidden";
-        "window.autoDetectColorScheme" = true;
-        "gopls" = {
-          "formatting.gofumpt" = true;
-        };
-      };
     };
   };
 
@@ -224,6 +222,41 @@ in
     secrets.wakatime_api_key = {};
   };
 
+  sops.templates."vscode-managed-settings.json" = {
+    path = "${config.home.homeDirectory}/.config/vscode-managed-settings.json";
+    content = builtins.toJSON {
+      "editor.fontFamily" = "'Berkeley Mono', 'JetBrains Mono', monospace";
+      "editor.fontSize" = 14;
+      "editor.fontLigatures" = true;
+      "terminal.integrated.fontFamily" = "'Berkeley Mono', 'JetBrains Mono', monospace";
+      "workbench.secondarySideBar.defaultVisibility" = "hidden";
+      "window.autoDetectColorScheme" = true;
+      "gopls" = {
+        "formatting.gofumpt" = true;
+      };
+    };
+  };
+
+  # Merge nix-managed settings into VS Code settings, preserving user changes
+  home.activation.mergeVscodeSettings = lib.hm.dag.entryAfter [ "sops-nix" "writeBoundary" ] ''
+    SETTINGS_FILE="$HOME/Library/Application Support/Code/User/settings.json"
+    MANAGED_FILE="$HOME/.config/vscode-managed-settings.json"
+
+    # Remove symlink if home-manager created one
+    [ -L "$SETTINGS_FILE" ] && rm "$SETTINGS_FILE"
+
+    if [ -f "$MANAGED_FILE" ]; then
+      if [ -f "$SETTINGS_FILE" ]; then
+        # Merge: managed keys override, user keys preserved
+        ${pkgs.jq}/bin/jq -s '.[0] * .[1]' "$SETTINGS_FILE" "$MANAGED_FILE" > "$SETTINGS_FILE.tmp"
+        mv "$SETTINGS_FILE.tmp" "$SETTINGS_FILE"
+      else
+        mkdir -p "$(dirname "$SETTINGS_FILE")"
+        cp "$MANAGED_FILE" "$SETTINGS_FILE"
+      fi
+    fi
+  '';
+
   sops.templates.".wakatime.cfg" = {
     path = "${config.home.homeDirectory}/.wakatime.cfg";
     content = ''
@@ -238,9 +271,10 @@ in
     default-cache-ttl 600
     max-cache-ttl 7200
   '';
-  # YubiKey authentication subkey keygrip
+  # YubiKey authentication subkey keygrips
   home.file.".gnupg/sshcontrol".text = ''
     58B1D9D210192CB7CF3E012C99AE0D41A867E1FD
+    258EB962B910B86E49D3DBA823048122C7280187
   '';
 
   # Use GPG agent as SSH agent

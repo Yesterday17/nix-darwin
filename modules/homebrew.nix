@@ -1,4 +1,4 @@
-{ username, homebrew-core, homebrew-cask, config, ... }:
+{ username, homebrew-core, homebrew-cask, homebrew-steipete-tap, config, ... }:
 
 {
   nix-homebrew = {
@@ -8,6 +8,7 @@
     taps = {
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
+      "steipete/homebrew-tap" = homebrew-steipete-tap;
     };
     mutableTaps = false;
   };
@@ -59,6 +60,7 @@
       "surge"
       "orbstack"
       "android-studio"
+      "tableplus"
 
       # Fonts
       "font-jetbrains-mono"
@@ -66,6 +68,7 @@
 
       # AI
       "claude"
+      "steipete/tap/codexbar"
 
       # IM
       "telegram-desktop"
@@ -86,8 +89,10 @@
       "010-editor"
       "tunnelblick"
       "typeless"
+      "setapp"
 
       # Entertainment
+      "calibre"
       "iina"
       "steam"
       "prismlauncher"

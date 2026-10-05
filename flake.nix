@@ -20,6 +20,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    homebrew-steipete-tap = {
+      url = "github:steipete/homebrew-tap";
+      flake = false;
+    };
 
     claude-code.url = "github:sadjow/claude-code-nix";
 
@@ -32,12 +36,12 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, claude-code, sops-nix, rime-wanxiang }:
+  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-steipete-tap, claude-code, sops-nix, rime-wanxiang }:
   let
     username = "yesterday17";
     hosts = [ "Yesterday17-M3" "Yesterday17-M5" ];
 
-    specialArgs = { inherit self username homebrew-core homebrew-cask claude-code; };
+    specialArgs = { inherit self username homebrew-core homebrew-cask homebrew-steipete-tap claude-code; };
 
     sharedDarwinModules = [
       nix-homebrew.darwinModules.nix-homebrew

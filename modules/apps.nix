@@ -17,6 +17,7 @@
 
     # Utilities
     jq
+    ripgrep
     ffmpeg-full
     mkvtoolnix-cli
     flac
