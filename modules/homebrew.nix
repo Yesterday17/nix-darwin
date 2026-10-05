@@ -28,6 +28,8 @@
       Xcode = 497799835;
       QQ = 451108668;
       "Microsoft Excel" = 462058435;
+      "NTE: Neverness to Everness" = 6754593077;
+      Amphetamine = 937984704;
     };
 
     brews = [
@@ -48,6 +50,11 @@
       "pixman"
       "awscli"
       "opus-tools"
+      "tmux"
+      "uv"
+      "xcodegen"
+      "zig"
+      "zig@0.15"
     ];
 
     casks = [
