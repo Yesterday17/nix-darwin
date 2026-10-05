@@ -57,6 +57,7 @@
 
   environment.variables.EDITOR = "nvim";
 
-  services.karabiner-elements.enable = true;
+  # Karabiner-Elements is installed via Homebrew.
+  # services.karabiner-elements.enable = true;
   services.tailscale.enable = true;
 }

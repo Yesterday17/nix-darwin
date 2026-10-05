@@ -76,6 +76,7 @@
       "lark"
 
       # Productivity
+      "karabiner-elements"
       "input-source-pro"
 
       # Terminal

@@ -12,15 +12,16 @@
 
   nixpkgs.overlays = [
     claude-code.overlays.default
-    (final: prev: {
-      karabiner-elements = prev.karabiner-elements.overrideAttrs (old: {
-        version = "14.13.0";
-        src = prev.fetchurl {
-          inherit (old.src) url;
-          hash = "sha256-gmJwoht/Tfm5qMecmq1N6PSAIfWOqsvuHU8VDJY8bLw=";
-        };
-        dontFixup = true;
-      });
-    })
+    # Karabiner-Elements is installed via Homebrew.
+    # (final: prev: {
+    #   karabiner-elements = prev.karabiner-elements.overrideAttrs (old: {
+    #     version = "14.13.0";
+    #     src = prev.fetchurl {
+    #       inherit (old.src) url;
+    #       hash = "sha256-gmJwoht/Tfm5qMecmq1N6PSAIfWOqsvuHU8VDJY8bLw=";
+    #     };
+    #     dontFixup = true;
+    #   });
+    # })
   ];
 }
