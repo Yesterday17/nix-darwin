@@ -51,8 +51,6 @@
     # Load testing
     k6
 
-    # Chatting
-    mumble
   ];
 
   environment.variables.EDITOR = "nvim";

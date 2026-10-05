@@ -99,6 +99,9 @@
       "typeless"
       "setapp"
 
+      # Chatting
+      "mumble"
+
       # Entertainment
       "calibre"
       "iina"
