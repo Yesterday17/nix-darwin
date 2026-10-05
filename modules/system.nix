@@ -103,19 +103,19 @@
       };
 
       # Input sources: Squirrel (Rime)
-      CustomUserPreferences."com.apple.inputsources" = {
-        AppleEnabledThirdPartyInputSources = [
-          {
-            "Bundle ID" = "im.rime.inputmethod.Squirrel";
-            "Input Mode" = "im.rime.inputmethod.Squirrel.Hans";
-            InputSourceKind = "Input Mode";
-          }
-          {
-            "Bundle ID" = "im.rime.inputmethod.Squirrel";
-            InputSourceKind = "Keyboard Input Method";
-          }
-        ];
-      };
+      #CustomUserPreferences."com.apple.inputsources" = {
+      #  AppleEnabledThirdPartyInputSources = [
+      #    {
+      #      "Bundle ID" = "im.rime.inputmethod.Squirrel";
+      #      "Input Mode" = "im.rime.inputmethod.Squirrel.Hans";
+      #      InputSourceKind = "Input Mode";
+      #    }
+      #    {
+      #      "Bundle ID" = "im.rime.inputmethod.Squirrel";
+      #      InputSourceKind = "Keyboard Input Method";
+      #    }
+      #  ];
+      #};
 
       # Input sources: ABC + Japanese (Romaji)
       CustomUserPreferences."com.apple.HIToolbox" = {
