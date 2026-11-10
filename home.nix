@@ -5,7 +5,14 @@ let
     pname = "rime-wanxiang-flypy";
     version = rime-wanxiang.rev or "unstable";
     src = rime-wanxiang;
-    nativeBuildInputs = with pkgs; [ python3 rsync zip unzip ];
+    nativeBuildInputs = with pkgs; [ python3 rsync zip unzip perl opencc ];
+    # Upstream writes `$VAR）` (a full-width bracket right after the name).
+    # The sandbox bash is not in a UTF-8 locale, so it reads the bracket's
+    # first byte as part of the name and `set -u` aborts; brace every such name.
+    postPatch = ''
+      perl -pi -e 's/\$([A-Za-z_]\w*)(?=[^\x00-\x7F])/\''${$1}/g' \
+        .github/workflows/scripts/release-build.sh
+    '';
     buildPhase = ''
       export HOME=$TMPDIR
       export SCHEMA_NAME=flypy
@@ -90,6 +97,14 @@ in
   # Zsh
   programs.zsh = {
     enable = true;
+    # Carried over from the installer-written ~/.zprofile, which Home Manager now owns.
+    profileExtra = ''
+      # OrbStack: command-line tools and integration
+      source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+      # Codex installer
+      export PATH="$HOME/.local/bin:$PATH"
+    '';
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     history = {
@@ -268,8 +283,10 @@ in
   home.file.".gnupg/gpg-agent.conf".text = ''
     pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
     enable-ssh-support
-    default-cache-ttl 600
-    max-cache-ttl 7200
+    default-cache-ttl 28800
+    max-cache-ttl 86400
+    default-cache-ttl-ssh 28800
+    max-cache-ttl-ssh 86400
   '';
   # YubiKey authentication subkey keygrips
   home.file.".gnupg/sshcontrol".text = ''
